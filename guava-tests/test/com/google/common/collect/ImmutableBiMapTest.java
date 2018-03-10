@@ -712,7 +712,7 @@ public class ImmutableBiMapTest extends TestCase {
       ImmutableBiMap<?, ?> create(List<? extends Entry<?, ?>> entries, CallsCounter counter) {
         ImmutableBiMap.Builder<Object, Object> builder = ImmutableBiMap.builder();
         for (Entry<?, ?> entry : entries) {
-          builder.put(entry.getKey(), entry.getValue());
+          builder.put(entry);
         }
         return builder.build();
       }

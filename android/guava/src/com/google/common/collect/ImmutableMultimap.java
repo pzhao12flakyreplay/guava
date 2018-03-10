@@ -630,14 +630,13 @@ public abstract class ImmutableMultimap<K, V> extends AbstractMultimap<K, V>
       return true;
     }
 
-    @GwtIncompatible
-    @Override
+    // We can't label this with @Override, because it doesn't override anything
+    // in the GWT emulated version.
     Object writeReplace() {
       return new KeysSerializedForm(ImmutableMultimap.this);
     }
   }
-
-  @GwtIncompatible
+  
   private static final class KeysSerializedForm implements Serializable {
     final ImmutableMultimap<?, ?> multimap;
 

@@ -225,14 +225,6 @@ public final class MediaType {
   public static final MediaType WEBM_AUDIO = createConstant(AUDIO_TYPE, "webm");
 
   /**
-   * Media type for L16 audio, as defined by <a href="https://tools.ietf.org/html/rfc2586">RFC
-   * 2586</a>.
-   *
-   * @since NEXT
-   */
-  public static final MediaType L16_AUDIO = createConstant(AUDIO_TYPE, "l16");
-
-  /**
    * Media type for L24 audio, as defined by <a href="https://tools.ietf.org/html/rfc3190">RFC
    * 3190</a>.
    *

@@ -15,7 +15,6 @@
 package com.google.common.collect;
 
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
 import com.google.common.collect.Multiset.Entry;
 import com.google.common.primitives.Ints;
 import com.google.errorprone.annotations.concurrent.LazyInit;
@@ -29,7 +28,7 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
  * @author Jared Levy
  * @author Louis Wasserman
  */
-@GwtCompatible(emulated = true, serializable = true)
+@GwtCompatible(serializable = true)
 @SuppressWarnings("serial") // uses writeReplace(), not default serialization
 class RegularImmutableMultiset<E> extends ImmutableMultiset<E> {
   static final RegularImmutableMultiset<Object> EMPTY =
@@ -99,7 +98,6 @@ class RegularImmutableMultiset<E> extends ImmutableMultiset<E> {
     return contents.getEntry(index);
   }
 
-  @GwtIncompatible
   private static class SerializedForm implements Serializable {
     final Object[] elements;
     final int[] counts;
@@ -128,8 +126,8 @@ class RegularImmutableMultiset<E> extends ImmutableMultiset<E> {
     private static final long serialVersionUID = 0;
   }
 
-  @GwtIncompatible
-  @Override
+  //We can't label this with @Override, because it doesn't override anything
+  // in the GWT emulated version.
   Object writeReplace() {
     return new SerializedForm(this);
   }
